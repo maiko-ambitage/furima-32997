@@ -25,7 +25,6 @@
 
 | Column                   | Type       | Options                        |
 | -------------------------| ---------- | ------------------------------ |
-|                          |            |                                |
 | name                     | string     | null: false                    |
 | info                     | text       | null: false                    |
 | category_id              | integer    | null: false                    |
@@ -36,21 +35,18 @@
 | price                    | integer    | null: false                    |
 | user                     | references | null:false,foreign_key: true   |
 
+
 ### Associations
 - belongs_to :user
 - has_one  :order
-- has_one  :category
-- has_one  :status
-- has_one  :shipping_fee_status
-- has_one  :prefecture
-- has_one  :prepare_days
+
 
 ##  ordersテーブル
 
 | Column        | Type       | Options     |
 | ------------- | ---------- | ----------  |
 | user          | references | null: false,foreign_key: true|
-| sold_out_item | references | null: false,foreign_key: true| 
+| item          | references | null: false,foreign_key: true| 
 ### Associations
 - belongs_to : item
 - has_one :address
@@ -61,59 +57,12 @@
 
 | Column        | Type       | Options     |
 | ------------- | ---------- | ------------|
-| postal-code   | string       | null: false |
+| postal_code   | string     | null: false |
 | prefecture_id | integer    | null: false |
-| city          | string       | null: false |
+| city          | string     | null: false |
 | addresses     | string     | null: false |
 | building      | string     |             |
-| phone-number  | string     | null: false |
+| phone_number  | string     | null: false |
 ### Associations
-belongs_to :orders
-
-## prefectures
-
-| Column        | Type       | Options     |
-| ------------- | ---------- | ----------  |
-| prefecture    | integer    | null: false |
-belongs_to :items
-belongs_to :addresses
-
-## categories
-| Column         | Type       | Options    |
-| ---------------| ---------- | ---------- |
-| category       | integer    | null:false |
-### Associations
-belongs_to :items
-
-## categories
-| Column         | Type       | Options    |
-| ---------------| ---------- | ---------- |
-| category       | integer    | null:false |
-### Associations
-belongs_to :items
-
-## status
-
-| Column         | Type       | Options    |
-| ---------------| ---------- | ---------- |
-| status         | integer    | null:false |
-### Associations
-belongs_to :items
-
-## shipping_fee_status
-
-| Column         | Type       | Options    |
-| ---------------| ---------- | ---------- |
-| shipping_fee_status | integer    | null:false |
-### Associations
-belongs_to :items
-
-## prepare_days
-
-| Column         | Type       | Options    |
-| ---------------| ---------- | ---------- |
-| prepare_days   | integer    | null:false |
-### Associations
-belongs_to :items
-
+belongs_to :order
 
