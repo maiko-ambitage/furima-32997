@@ -7,7 +7,7 @@
 |:-----------|------------:|:------------:|
 | nickname   | string      | null: false  |
 | email      | string      | null: false,unique:true  |
-| encrypted_password| string      | null: false  |
+| encrypted_password| string| null: false  |
 | last_name  | string      | null: false  |
 | first_name | string       | null: false  |
 | last_name_kana    | string       | null: false  |
@@ -31,7 +31,7 @@
 | status_id                | integer    | null: false                    |
 | shipping_fee_status_id   | integer    | null: false                    |
 | prefecture_id            | integer    | null: false                    |
-| prepare_days_id    | integer    | null: false                    |
+| prepare_days_id          | integer    | null: false                    |
 | price                    | integer    | null: false                    |
 | user                     | references | null:false,foreign_key: true   |
 
@@ -63,6 +63,7 @@
 | addresses     | string     | null: false |
 | building      | string     |             |
 | phone_number  | string     | null: false |
+| order         | references | null: false,foreign_key: true|
 ### Associations
 belongs_to :order
 
