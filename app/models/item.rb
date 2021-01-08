@@ -1,12 +1,12 @@
 class Item < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions do
-    belongs_to :category
-    belongs_to :status
-    belongs_to :shipping_fee_status
-    belongs_to :prefecture
-    belongs_to :prepare_days
-  end
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :status
+  belongs_to_active_hash :shipping_fee_status
+  belongs_to :prefecture
+  belongs_to :prepare_days
 
+  default_scope -> { order(created_at: :desc) }
   has_one_attached :image
   belongs_to :user
 
