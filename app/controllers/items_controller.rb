@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_item, only: [:show, :edit, :update]
+  before_action :divide_user,only: [:edit, :update]
   def index
     @items = Item.all
   end
@@ -22,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
+   
   end
 
   def update
@@ -42,5 +43,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def divide_user
+    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
   end
 end
