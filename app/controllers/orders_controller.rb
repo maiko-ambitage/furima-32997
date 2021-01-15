@@ -43,7 +43,9 @@ class OrdersController < ApplicationController
   end
 
   def divide_user
-    redirect_to root_path if user_signed_in? && current_user.id == @item.user_id
-    redirect_to root_path unless @item.order.nil?
+   if user_signed_in? && current_user.id == @item.user_id || @item.order.present?
+    redirect_to root_path 
+   end
   end
+   
 end
