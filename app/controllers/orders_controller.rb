@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
 
   def index
     @order_form = OrderForm.new
-    redirect_to root_path unless @item.order.nil?
+   
   end
 
   def create
@@ -44,5 +44,6 @@ class OrdersController < ApplicationController
 
   def divide_user
     redirect_to root_path if user_signed_in? && current_user.id == @item.user_id
+    redirect_to root_path unless @item.order.nil?
   end
 end

@@ -10,7 +10,7 @@ class OrderForm
     validates :address
     validates :phone_number, format: { with: /\A\d{10,11}\z/ }
     validates :prefecture_id, numericality: { other_than: 1 }
-    validates :token, presence: true
+    validates :token
   end
 
   def save
