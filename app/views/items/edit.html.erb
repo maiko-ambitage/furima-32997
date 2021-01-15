@@ -11,7 +11,7 @@ app/assets/stylesheets/items/new.css %>
 
    
     <%= render 'shared/error_messages', model: f.object%>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    
 
     <%# 出品画像 %>
     <div class="img-upload">
@@ -83,7 +83,7 @@ app/assets/stylesheets/items/new.css %>
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:prepare_days_id,PrepareDays.all, :id, :name, {}, {class:"select-box"}) %>
+        <%= f.collection_select(:prepare_day_id,PrepareDays.all, :id, :name, {}, {class:"select-box"}) %>
       </div>
     </div>
     <%# /配送について %>

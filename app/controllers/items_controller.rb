@@ -1,9 +1,11 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update,:destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  
   before_action :divide_user,only: [:edit, :update, :destroy]
   def index
     @items = Item.all
+  
   end
 
   def new
@@ -46,7 +48,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :info, :category_id, :status_id, :shipping_fee_status_id, :prefecture_id, :prepare_days_id,
+    params.require(:item).permit(:name, :info, :category_id, :status_id, :shipping_fee_status_id, :prefecture_id, :prepare_day_id,
                                  :price, :image).merge(user_id: current_user.id)
   end
 
@@ -57,4 +59,6 @@ class ItemsController < ApplicationController
   def divide_user
     redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
   end
+
+ 
 end
