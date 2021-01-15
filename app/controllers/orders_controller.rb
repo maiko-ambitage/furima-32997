@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
-
   before_action :divide_user, only: [:index, :create]
+
 
   def index
     @order_form = OrderForm.new
-   
   end
+   
 
   def create
     @order_form = OrderForm.new(order_form_params)
@@ -16,10 +16,10 @@ class OrdersController < ApplicationController
       @order_form.save
       redirect_to root_path
     else
-
       render action: :index
     end
   end
+
 
   private
 
