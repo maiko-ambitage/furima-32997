@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品' do
     context '商品出品できるとき' do
-      it 'name,info,category_id,status_id,shipping_fee_status_id,prefecture_id,prepare_days_id,price,userが存在すれば登録できる' do
+      it 'name,info,category_id,status_id,shipping_fee_status_id,prefecture_id,prepare_day_id,price,userが存在すれば登録できる' do
         expect(@item).to be_valid
       end
       it 'priceが半角数字であれば登録できる' do
@@ -51,8 +51,8 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
-      it 'prepare_days_idが空では登録できない' do
-        @item.prepare_days_id = ''
+      it 'prepare_day_idが空では登録できない' do
+        @item.prepare_day_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Prepare days can't be blank")
       end
@@ -98,8 +98,8 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
       end
-      it 'prepare_days_idが1の場合登録できない' do
-        @item.prepare_days_id = 1
+      it 'prepare_day_idが1の場合登録できない' do
+        @item.prepare_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Prepare days must be other than 1')
       end

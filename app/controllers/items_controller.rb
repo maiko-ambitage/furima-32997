@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update,:destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :divide_user,only: [:edit, :update, :destroy]
+  before_action :divide_user, only: [:edit, :update, :destroy]
+
   def index
     @items = Item.all
   end
@@ -11,7 +12,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
     else
@@ -23,7 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-   
   end
 
   def update
@@ -42,11 +42,10 @@ class ItemsController < ApplicationController
     end
   end
 
-
   private
 
   def item_params
-    params.require(:item).permit(:name, :info, :category_id, :status_id, :shipping_fee_status_id, :prefecture_id, :prepare_days_id,
+    params.require(:item).permit(:name, :info, :category_id, :status_id, :shipping_fee_status_id, :prefecture_id, :prepare_day_id,
                                  :price, :image).merge(user_id: current_user.id)
   end
 
