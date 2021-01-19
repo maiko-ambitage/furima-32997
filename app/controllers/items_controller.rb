@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :divide_user, only: [:edit, :update, :destroy]
+  before_action :seller,only: [:edit]
 
   def index
     @items = Item.all
@@ -24,6 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+   
   end
 
   def update
@@ -54,6 +56,13 @@ class ItemsController < ApplicationController
   end
 
   def divide_user
-    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
+    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id 
   end
+
+  def seller
+    if  user_signed_in? && current_user.id == @item.user_id 
+      redirect_to root_path
+    end
+  end
+
 end
